@@ -6,7 +6,12 @@ from the previous milestone release.
 
 UNRELEASED
 ----------
+* ``OpaqueBytes.bytes`` now returns a clone of its underlying ``ByteArray``, and has been redeclared as ``final``.
+  This is a minor change to the public API, but is required to ensure that classes like ``SecureHash`` are immutable.
+
 * ``FlowLogic`` now exposes a series of function called ``receiveAll(...)`` allowing to join ``receive(...)`` instructions.
+
+* Renamed "plugins" directory on nodes to "cordapps"
 
 * The ``Cordformation`` gradle plugin has been split into ``cordformation`` and ``cordapp``. The former builds and
   deploys nodes for development and testing, the latter turns a project into a cordapp project that generates JARs in
@@ -45,6 +50,9 @@ UNRELEASED
 * ``CordaService`` annotated classes should be upgraded to take a constructor parameter of type ``AppServiceHub`` which
   allows services to start flows marked with the ``StartableByService`` annotation. For backwards compatability
   service classes with only ``ServiceHub`` constructors will still work.
+
+* ``TimeWindow`` now has a ``length`` property that returns the length of the time-window, or ``null`` if the
+  time-window is open-ended.
 
 .. _changelog_v1:
 
